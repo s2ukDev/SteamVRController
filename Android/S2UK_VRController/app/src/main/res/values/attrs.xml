@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="JoystickView">
+
+        <attr name="JOY_buttonImage" format="reference" />
+
+        <attr name="JOY_backgroundColor" format="color"/>
+
+        <attr name="JOY_buttonColor" format="color"/>
+
+        <attr name="JOY_borderColor" format="color"/>
+
+        <attr name="JOY_borderAlpha" format="integer"/>
+
+        <attr name="JOY_borderWidth" format="dimension"/>
+
+        <attr name="JOY_fixedCenter" format="boolean"/>
+
+        <attr name="JOY_autoReCenterButton" format="boolean"/>
+
+        <attr name="JOY_buttonStickToBorder" format="boolean"/>
+
+        <attr name="JOY_enabled" format="boolean"/>
+
+        <attr name="JOY_buttonSizeRatio" format="fraction"/>
+
+        <attr name="JOY_backgroundSizeRatio" format="fraction"/>
+
+        <attr name="JOY_buttonDirection">
+            <flag name="horizontal" value="-1"/>
+            <flag name="both" value="0"/>
+            <flag name="vertical" value="1"/>
+
+        </attr>
+
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/controller_ButtonY"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/btn_y"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/controller_ButtonX"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="244dp"
+        android:background="@drawable/btn_x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <org.s2uk.vrcontroller.JoystickView
+        android:id="@+id/controllerJoystick_L"
+        android:layout_width="164dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="100dp"
+        app:JOY_borderWidth="2dp"
+        app:JOY_buttonColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/controller_ButtonMenu"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="252dp"
+        android:background="@drawable/btn_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <org.s2uk.vrcontroller.JoystickView
+        android:id="@+id/controllerJoystick_R"
+        android:layout_width="164dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="172dp"
+        app:JOY_borderWidth="2dp"
+        app:JOY_buttonColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/controller_ButtonSystem"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/btn_system"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/controller_ButtonA"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/btn_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/controller_ButtonB"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/btn_b"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/debugInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Debug info:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/connectToPCbtn"
+        android:layout_width="150dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/connect_to_pc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintStart_toEndOf="@+id/recenterBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/recenterBtn"
+        android:layout_width="182dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/recenter_controller"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/connectionStatusTextView"
+        android:layout_width="379dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/tcp_client_info_template"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

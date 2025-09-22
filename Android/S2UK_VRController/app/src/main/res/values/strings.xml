@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name" translatable="false">S2UKVR Controller</string>
+    <string name="read_storage_permission">
+            S2UKVR Controller requires to read your external storage to load device parameters.
+    </string>
+    <string name="recenter_controller">Recenter</string>
+    <string name="connect_to_pc">Connect to PC</string>
+    <string name="tcp_client_dialog_name">Connect to the server</string>
+    <string name="tcp_client_dialog_description">Enter the server IP</string>
+    <string name="tcp_client_dialog_connect">Connect</string>
+    <string name="connect_client_is_left_hand">Left Hand?</string>
+    <string name="generic_cancel">Cancel</string>
+    <string name="tcp_client_dialog_ip_hint">192.168.x.x</string>
+    <string name="generic_disconnect">Disconnect</string>
+    <string name="tcp_client_info_template">"Connection status: "</string>
+    <string name="tcp_client_status_no_init">Client isn\'t initialized.</string>
+    <string name="tcp_client_status_connection_closed">Connection closed.</string>
+    <string name="tcp_client_status_connection_timeout">Connection timeout.</string>
+    <string name="tcp_client_status_connecting">Connecting...</string>
+    <string name="tcp_client_status_disconnected">Disconnected.</string>
+    <string name="tcp_client_status_connected">Connected.</string>
+    <string name="tcp_client_status_connection_null">Connection reset.</string>
+    <string name="tcp_client_status_fail">No route to host.</string>
+</resources>
