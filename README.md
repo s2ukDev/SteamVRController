@@ -222,10 +222,10 @@ email, or any other method with the owners of this repository before making a ch
 
 ## Roadmap
 
-- [x] v1.0.0-beta - Initial pre-release
-- [ ] v1.0.1-beta - Player position offset fixes
+- [x] v1.0.0-alpha - Initial pre-release
+- [ ] v1.0.1-alpha - Player position offset fixes
 - [ ] v1.1.0-beta - Full-body tracking
-- [ ] v1.1.2 - Imgui Debug Window
+- [ ] v1.1.2-beta - Imgui Debug Window
 
 ---
 
