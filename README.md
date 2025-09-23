@@ -134,7 +134,7 @@ git clone https://github.com/s2ukDev/SteamVRController.git
      * SteamVRController\SteamVR-Windows-Driver\s2uk_controller\s2uk_controller.sln
    2. Modify the post-build script if necessary:
      * SteamVRController\SteamVR-Windows-Driver\s2uk_controller\postBuildScript.bat
-  3. **Build the project in Release mode.**
+   3. **Build the project in Release mode.**
 3. **Build the Android app**
    1. Open Android Studio.
    2. Make sure the Android NDK is installed.
