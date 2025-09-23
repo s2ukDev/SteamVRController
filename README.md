@@ -1,10 +1,10 @@
 # S2UK SteamVR Controller
 
-![Build passing](https://img.shields.io/badge/build-passing-brightgreen)
-![GitHub license](https://img.shields.io/github/license/s2ukDev/SteamVRController)
-![GitHub release (latest)](https://img.shields.io/github/v/release/s2ukDev/SteamVRController)
-![GitHub issues](https://img.shields.io/github/issues/s2ukDev/SteamVRController)
-![GitHub stars](https://img.shields.io/github/stars/s2ukDev/SteamVRController)
+![Build passing img](https://img.shields.io/badge/build-passing-brightgreen)
+![GitHub license img](https://img.shields.io/github/license/s2ukDev/SteamVRController)
+![GitHub latest release img](https://img.shields.io/github/v/release/s2ukDev/SteamVRController)
+![GitHub issues img](https://img.shields.io/github/issues/s2ukDev/SteamVRController)
+![GitHub stars img](https://img.shields.io/github/stars/s2ukDev/SteamVRController)
 
 Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi for positional tracking with phone-based controller input.
 
@@ -13,6 +13,7 @@ Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi fo
 ## Table of Contents
 
 - [About](#about)
+- [How it works](#how-it-works)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
@@ -21,6 +22,7 @@ Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi fo
 - [Post-Build](#post-build)
 - [Troubleshooting](#troubleshooting)
 - [Configuration](#configuration)
+- [Controller Layout](#controller-layout)
 - [Screenshots & Videos](#screenshots--videos)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
@@ -42,10 +44,31 @@ The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S),
 
 
 **Project architecture:**
-- **Windows SteamVR driver** – Fully-written in C++ -- communicates with the connected Android device via TCP and interfaces with the Kinect sensor and OpenVR.
-- **Android companion app** – Built with Java/Kotlin/C++ -- sends orientation and input data to the PC and receives haptic feedback over the local network.
+- **Windows SteamVR driver** – Fully-written in C++ - communicates with the connected Android device via TCP and interfaces with the Kinect sensor and OpenVR.
+- **Android companion app** – Built with Java/Kotlin/C++ - sends orientation and input data to the PC and receives haptic feedback over the local network.
 
 ---
+
+## How it works
+
+### Driver Hooks
+The SteamVR driver hooks into these interfaces:
+
+- `IVRServerDriverHost005::TrackedDevicePoseUpdated`
+- `IVRServerDriverHost006::TrackedDevicePoseUpdated`
+- `IVRDriverContext::GetGenericInterface`
+
+Then it feeds head position data retrieved from the Kinect sensor into `IVRServerDriverHost005` and `IVRServerDriverHost006`.
+
+*Controllers also receive positional data from the Kinect (doesn't get sent to phone app), but ***without hooking***, since the driver owns their device IDs.*
+
+### Network Communication
+- The SteamVR driver hosts a TCP server on port `9775`.
+- Android clients connect and send controller data every **10 ms**.
+- Once SteamVR pulls a haptic event → gets broadcasted to the clients → decoded → intepreted.
+
+---
+
 
 ## Features
 
@@ -70,26 +93,26 @@ The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S),
 
 ## Prerequisites
 
-- **C++20-compatible compiler:**
+- **Cpp-compatible compiler:**
   - MSVC 17.x (Visual Studio 2022)
 - **Android Studio** (latest stable)
-- **CMake** ≥ 3.22.1 (bundled with Android Studio)  
-- **Android NDK** (installed via Android Studio SDK Manager)
-- **Gradle** (bundled with Android Studio)
-- **Kinect for Windows SDK v1.8** – [Link](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
-- **Minimum Android API (minSdkVersion):** `31` (Android 12)
+- **CMake** ≥ 3.22.1 
+- **Android NDK** (can be installed via Android Studio SDK Manager)
+- **Gradle**
+- **Kinect for Windows SDK v1.8** - [Link](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
+- **Minimum supported Android API version:** `31` (Android 12)
 
 ---
 
 ## Installation
 
 1. **Install SteamVR**
-   - Available via Steam: [SteamVR Store Page](https://store.steampowered.com/app/250820/SteamVR/)
+   - [SteamVR Store Page](https://store.steampowered.com/app/250820/SteamVR/)
 2. **Install Kinect SDK v1.8**
-   - Download here: [Kinect for Windows SDK v1.8](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
+   - [Kinect for Windows SDK v1.8](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
 3. **Get the latest release**
-   - Download the **SteamVR driver** and **Android APK** from the [Releases](https://github.com/s2ukDev/SteamVRController/releases) tab
-   - Or compile both from source
+   - Download the **SteamVR driver** and **Android APK** from the [Releases](https://github.com/s2ukDev/SteamVRController/releases) tab.
+   - Or compile both from source.
 4. **Install the SteamVR driver**
    - Unzip the driver into:
      ```
@@ -100,8 +123,6 @@ The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S),
 
 ## Build & Run
 
-Before building, make sure you have installed all prerequisites: SteamVR, Kinect SDK v1.8, and the Android SDK/NDK.
-
 1. **Clone the repo**
 
 ```bat
@@ -109,21 +130,21 @@ git clone https://github.com/s2ukDev/SteamVRController.git
 ```
 
 2. **Build the Windows SteamVR driver**
-   1. Open the solution file in Visual Studio 2022:
+   1. Open the solution in Visual Studio 2022:
      * SteamVRController\SteamVR-Windows-Driver\s2uk_controller\s2uk_controller.sln
-   2. Modify the post-build script if needed:
+   2. Modify the post-build script if necessary:
      * SteamVRController\SteamVR-Windows-Driver\s2uk_controller\postBuildScript.bat
   3. **Build the project in Release mode.**
 3. **Build the Android app**
    1. Open Android Studio.
-   2. Open the project located at: SteamVRController\Android\S2UK_VRController
-   3. Ensure the Android NDK is installed via the SDK Manager.
-   4. Build the APK in Android Studio UI or via terminal:
+   2. Make sure the Android NDK is installed.
+   3. Make sure your phone API version is supported (minSdk = 31 / Android 12).
+   4. Open the project located at: SteamVRController\Android\S2UK_VRController
+   5. Build the APK in Android Studio UI or via terminal:
       ```bat
       gradlew assembleRelease
       ```
-   5. Make sure your phone API version is supported.
-   5. Install the APK on your Android devices.
+   6. Install the APK on your Android devices.
 
 ## Post-build
 
@@ -132,7 +153,7 @@ git clone https://github.com/s2ukDev/SteamVRController.git
      
      `<Steam installation directory>\steamapps\common\SteamVR\drivers\s2ukController\`
      
-   - If not, modify `<repositoryDir>SteamVRController\SteamVR-Windows-Driver\s2uk_controller\postBuildScript.bat` to point to your Steam installation directory and re-run the build.
+   - If not, modify `<repositoryDir>\SteamVRController\SteamVR-Windows-Driver\s2uk_controller\postBuildScript.bat` to point to your Steam installation directory and re-run the build.
   2. Connect your Kinect v1 sensor and verify the Kinect SDK v1.8 is working properly.
   3. Start **SteamVR**.
   4. In SteamVR go to **Settings → Drivers** and enable **s2ukController** (toggle the driver on).
@@ -146,7 +167,7 @@ git clone https://github.com/s2ukDev/SteamVRController.git
 - Restart SteamVR and verify the driver folder exists:  
   `<Steam installation directory>\steamapps\common\SteamVR\drivers\s2ukController\`
 - Check the post-build script for errors, copy the driver manually.
-- Use Android Studio **Logcat** (or `adb logcat`) to debug the APK → PC connection.
+- Use Android Studio **Logcat** / `adb logcat` to debug the app → PC connection for errors.
 - Ensure the PC and phone are on the **same local network** and same subnet.
 - Check for firewall settings and open/forward the required LAN port (`TCP 9775`).
 - If problems persist, reboot the PC and the phone and try again.
@@ -195,6 +216,39 @@ Driver configuration is stored as JSON at:
 
 ---
 
+## Controller Layout
+
+### Connection Settings
+<p align="center">
+  <img src="assets/Android/connection-settings.jpg" alt="S2UK VR Controller connection settings" width="300">
+</p>
+
+---
+
+### Left Controller
+<p align="center">
+  <img src="assets/Android/left-controller.jpg" alt="S2UK VR Controller left controller screenshot" width="300">
+</p>
+
+**Hold phone in portrait mode**
+- **Volume Up** → Trigger
+- **Volume Down** → Grip
+- **Double press** trigger/grip → Half-press state
+
+---
+
+### Right Controller
+<p align="center">
+  <img src="assets/Android/right-controller.jpg" alt="S2UK VR Controller right controller screenshot" width="300">
+</p>
+
+**Hold phone in portrait mode, upside-down**
+- **Volume Down** → Trigger
+- **Volume Up** → Grip
+- **Double press** trigger/grip → Half-press state
+
+---
+
 ## Screenshots & Videos
 *Screenshots and demo videos will be added to show controller & HMD tracking in SteamVR Home, Beat Saber, The Lab and VRChat.*  
 
@@ -224,23 +278,24 @@ email, or any other method with the owners of this repository before making a ch
 
 - [x] v1.0.0-alpha - Initial pre-release
 - [ ] v1.0.1-alpha - Player position offset fixes
-- [ ] v1.1.0-beta - Full-body tracking
+- [ ] v1.1.0-alpha - Full-body tracking
 - [ ] v1.1.2-beta - Imgui Debug Window
 
 ---
 
 ## Credits
 
-- **Maintainer:** `s2ukDev` — [https://github.com/s2ukDev](https://github.com/s2ukDev)
+- **Maintainer:** [github.com/s2ukDev](https://github.com/s2ukDev)
 <!-- - Contributors: -->
 - **Controller Icons & Models:**
   Controllers in SteamVR appear as Meta Touch Plus.
   The original controller models/icons are bundled with SteamVR and are © Meta (Facebook Technologies, LLC).
   **This repository does not redistribute them.**
+
 - **Third-Party Libraries:**
-  - [MinHook](https://github.com/TsudaKageyu/minhook) — function hooking library for Windows.
-  - [OpenVR](https://github.com/ValveSoftware/openvr) — SteamVR runtime API.
-  - [nlohmann/json](https://github.com/nlohmann/json) — JSON parsing library for C++.
+  - [MinHook](https://github.com/TsudaKageyu/minhook) – x86/x64 Function Hooking Library for Windows.
+  - [OpenVR](https://github.com/ValveSoftware/openvr) – SteamVR runtime API.
+  - [nlohmann/json](https://github.com/nlohmann/json) – JSON parsing library for C++.
 
 ---
 
