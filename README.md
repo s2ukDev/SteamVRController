@@ -233,7 +233,7 @@ Driver configuration is stored as JSON at:
 **Hold phone in portrait mode**
 - **Volume Up** → Trigger
 - **Volume Down** → Grip
-- **Double press** trigger/grip → Half-press state
+- **Double press** trigger / grip → Half-pressed state
 
 ---
 
@@ -245,7 +245,7 @@ Driver configuration is stored as JSON at:
 **Hold phone in portrait mode, upside-down**
 - **Volume Down** → Trigger
 - **Volume Up** → Grip
-- **Double press** trigger/grip → Half-press state
+- **Double press** trigger / grip → Half-pressed state
 
 ---
 
