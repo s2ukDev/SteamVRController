@@ -47,7 +47,7 @@ It was made using Kinect v1 (Xbox 360) hardware with Microsoft's NuiApi for head
 
 **Note:** Positional tracking is limited to approximately 180° in front of the sensor.
 
-The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S), providing a low-cost alternative for users who already have the required hardware and to quickly test applications without a full VR setup.
+The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S), providing a low-cost alternative for users who already have the required hardware to quickly test applications without a full VR setup.
 
 
 **Project architecture:**
