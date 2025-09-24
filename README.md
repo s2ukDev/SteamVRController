@@ -10,6 +10,14 @@ Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi fo
 
 ---
 
+# ⚠️ Project Archived
+
+Because of the current state of the project, I've decided to archive it.
+Not sure if I will return to it in the future.
+
+---
+
+
 ## Table of Contents
 
 - [About](#about)
@@ -25,7 +33,6 @@ Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi fo
 - [Controller Layout](#controller-layout)
 - [Screenshots & Videos](#screenshots--videos)
 - [Contributing](#contributing)
-- [Roadmap](#roadmap)
 - [Credits](#credits)
 - [License](#license)
 - [Contact](#contact)
@@ -40,7 +47,7 @@ It was made using Kinect v1 (Xbox 360) hardware with Microsoft's NuiApi for head
 
 **Note:** Positional tracking is limited to approximately 180° in front of the sensor.
 
-The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S), providing a low-cost alternative for users who want to experiment with VR or quickly test applications without a full VR setup.
+The Android app **emulates** Meta Touch Plus controllers (from Meta Quest 3/3S), providing a low-cost alternative for users who already have the required hardware and to quickly test applications without a full VR setup.
 
 
 **Project architecture:**
@@ -250,11 +257,16 @@ Driver configuration is stored as JSON at:
 ---
 
 ## Screenshots & Videos
-*Screenshots and demo videos will be added to show controller & HMD tracking in SteamVR Home, Beat Saber, The Lab and VRChat.*  
+
+[steamvr-home v1.0.0-alpha showcase](https://www.youtube.com/watch?v=DFC6Ch8rsHk)
+
+*Controller tests in Beat Saber, The Lab and VRChat failed because of tracking drift/latency issues (50-60ms).*
 
 ---
 
 # Contributing
+
+*(This project currently archived and works on it may or may not be resumed in the future.)*
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. 
@@ -274,18 +286,9 @@ email, or any other method with the owners of this repository before making a ch
 
 ---
 
-## Roadmap
-
-- [x] v1.0.0-alpha - Initial pre-release
-- [ ] v1.0.1-alpha - Player position offset fixes
-- [ ] v1.1.0-alpha - Full-body tracking
-- [ ] v1.1.2-beta - Imgui Debug Window
-
----
-
 ## Credits
 
-- **Maintainer:** [github.com/s2ukDev](https://github.com/s2ukDev)
+- **Maintainer:** [github.com/s2ukDev](https://github.com/s2ukDev).  *(Project currently archived and works on it may or may not be resumed in the future.)*
 <!-- - Contributors: -->
 - **Controller Icons & Models:**
   Controllers in SteamVR appear as Meta Touch Plus.
