@@ -1,10 +1,11 @@
 # S2UK SteamVR Controller
 
 ![Build passing img](https://img.shields.io/badge/build-passing-brightgreen)
-![GitHub license img](https://img.shields.io/github/license/s2ukDev/SteamVRController)
-![GitHub latest release img](https://img.shields.io/github/v/release/s2ukDev/SteamVRController)
-![GitHub issues img](https://img.shields.io/github/issues/s2ukDev/SteamVRController)
-![GitHub stars img](https://img.shields.io/github/stars/s2ukDev/SteamVRController)
+[![GitHub license](https://img.shields.io/github/license/s2ukDev/SteamVRController)](https://github.com/s2ukDev/SteamVRController/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/s2ukDev/SteamVRController?include_prereleases)](https://github.com/s2ukDev/SteamVRController/releases)
+[![GitHub issues](https://img.shields.io/github/issues/s2ukDev/SteamVRController)](https://github.com/s2ukDev/SteamVRController/issues)
+[![GitHub stars](https://img.shields.io/github/stars/s2ukDev/SteamVRController?style=flat)](https://github.com/s2ukDev/SteamVRController)
+[![GitHub forks](https://img.shields.io/github/forks/s2ukDev/SteamVRController?style=flat)](https://github.com/s2ukDev/SteamVRController/fork)
 
 Proof-of-concept 6-DOF SteamVR controller implementation using Kinect, NuiApi for positional tracking with phone-based controller input.
 
